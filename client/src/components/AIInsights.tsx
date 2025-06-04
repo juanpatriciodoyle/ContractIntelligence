@@ -46,7 +46,10 @@ export default function AIInsights() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Active Analysis</span>
+              <div className="flex items-center space-x-2">
+                <TrendingUp className="w-4 h-4 text-white opacity-90" />
+                <span className="text-sm opacity-90">Active Analysis</span>
+              </div>
               <motion.span 
                 className="text-lg font-bold"
                 animate={{ scale: [1, 1.1, 1] }}
