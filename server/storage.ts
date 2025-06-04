@@ -213,8 +213,13 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const user: User = {
-      ...insertUser,
       id: this.currentUserId++,
+      username: insertUser.username,
+      password: insertUser.password,
+      firstName: insertUser.firstName,
+      lastName: insertUser.lastName,
+      email: insertUser.email,
+      role: insertUser.role || "vendor",
       createdAt: new Date(),
     };
     this.users.set(user.id, user);
@@ -232,7 +237,7 @@ export class MemStorage implements IStorage {
 
   async getVendorsWithUser(): Promise<VendorWithUser[]> {
     const vendorsWithUser: VendorWithUser[] = [];
-    for (const vendor of this.vendors.values()) {
+    for (const vendor of Array.from(this.vendors.values())) {
       const user = this.users.get(vendor.userId);
       if (user) {
         vendorsWithUser.push({ ...vendor, user });
@@ -243,9 +248,16 @@ export class MemStorage implements IStorage {
 
   async createVendor(insertVendor: InsertVendor): Promise<Vendor> {
     const vendor: Vendor = {
-      ...insertVendor,
       id: this.currentVendorId++,
       createdAt: new Date(),
+      userId: insertVendor.userId,
+      companyName: insertVendor.companyName,
+      contactName: insertVendor.contactName,
+      contactEmail: insertVendor.contactEmail,
+      contactPhone: insertVendor.contactPhone || null,
+      industry: insertVendor.industry,
+      verificationStatus: insertVendor.verificationStatus || "pending",
+      documents: insertVendor.documents || null,
     };
     this.vendors.set(vendor.id, vendor);
     return vendor;
