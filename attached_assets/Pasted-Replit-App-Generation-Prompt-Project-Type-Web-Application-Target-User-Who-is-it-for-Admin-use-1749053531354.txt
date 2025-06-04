@@ -1,0 +1,134 @@
+Replit App Generation Prompt
+Project Type: Web Application
+
+Target User (Who is it for?):
+
+Admin user: Responsible for managing and overseeing the entire contract lifecycle, with full access to all features.
+
+3rd Party Vendors: Need to create accounts, undergo an identity verification process, and use a portal to submit and track their contracts.
+
+App Functionality (What it does and Features):
+Develop a sophisticated Contract Management System with a strong emphasis on AI-driven insights, vendor verification, and a modern user experience.
+
+Core Features:
+
+Admin Dashboard:
+
+KPIs:
+
+Average contract processing time.
+
+Approval rate.
+
+Contracts nearing expiration (e.g., Number of contracts expiring in the next 30 days).
+
+Overall contract value.
+
+Contract List & Status: A clear, filterable, and sortable list of all contracts, displaying their current status (e.g., Pending, AI Analysis, Approved, Rejected, Needs More Info).
+
+AI Contract Analysis: For each submitted contract, AI should:
+
+Analyze the content.
+
+Suggest an action: Approve, Request More Information (with specific points highlighted), or Reject (with reasons).
+
+Extract key data points.
+
+Overall Contract Status Overview: Visual representation (e.g., pie chart, progress bars) showing the percentage of contracts that are Accepted, Rejected, Pending, etc.
+
+Contracts by Industry (in Billion $): A visual chart or graph displaying the total contract value aggregated by industry.
+
+Quick access to recently viewed or high-priority contracts.
+
+In-app Notifications: A "bell icon" indicating new submissions, status changes, or critical updates.
+
+Contract Management Module (Admin):
+
+Create, view, edit, and manage contract details.
+
+Manually override AI suggestions if needed.
+
+Securely store and access contract documents (submitted letter, main contract, sensitive data attachments).
+
+Track contract lifecycle and history.
+
+Search and filter contracts based on various criteria (ID, title, status, dates, vendor).
+
+Vendor Portal & Onboarding:
+
+Vendor Account Creation: Secure registration process for new vendors.
+
+Vendor Identity Verification: An onboarding step involving "document analysis" to verify vendor identity (initially, this can be a placeholder for the process, perhaps allowing manual admin approval after document upload).
+
+Vendor Contract Submission: Once verified, a simple and secure interface for vendors to submit new contracts.
+
+Fields for contract title, uploading the contract letter, the contract document itself, and any other required sensitive data.
+
+Vendor Contract Tracking: Vendors should be able to track the status of their submitted contracts (e.g., Submitted, Under Review, Approved, Rejected).
+
+Contract Data Model:
+
+ID: Unique identifier (auto-generated, not prominently displayed unless viewing a specific contract).
+
+Title: Clear and concise contract title.
+
+Acceptance Status: (e.g., Pending, AI Review, Needs User Review, Approved, Rejected, More Info Requested, Archived).
+
+Start Date: The effective start date of the contract.
+
+End Date: The expiration date of the contract.
+
+Submission Date: The date the contract was submitted.
+
+Submitted Letter: Field for attaching the initial proposal or cover letter (document upload).
+
+Contract Document: Field for attaching the main contract file (document upload).
+
+Sensitive Data: Secure field(s) or section for attaching or noting any sensitive information related to the contract (document upload or encrypted text).
+
+Vendor Information: (e.g., Vendor Name, Contact, Verification Status).
+
+AI Analysis Summary: (e.g., suggested action, confidence score, key clauses highlighted).
+
+User Management (Admin):
+
+Admin user with full access.
+
+Management of vendor accounts (e.g., approve/reject verification, disable accounts).
+
+AI & Innovation Focus:
+
+AI Contract Analysis: Core feature for contextual understanding, action suggestions, and data extraction.
+
+AI for Vendor Verification: AI-powered compliance check against (mock or conceptual) government data to verify vendor legitimacy.
+
+Explore AI for identifying potential risks, non-standard clauses, or missing information in submitted contracts.
+
+Innovative and intuitive user interface that simplifies complex contract management tasks.
+
+Styling & Design Details:
+
+Framework/Libraries: React with TypeScript.
+
+CSS: Styled Components.
+
+Color Scheme: Simple, aesthetic, modern, and professional. Use colors effectively to denote status (e.g., green for approved, yellow for pending/attention, red for rejected/urgent). Aim for high readability and a clean look.
+
+Design Inspiration: Emulate the user experience of platforms like Airbnb, Glovo, or Revolut – making complex processes feel intuitive and easy to navigate. Focus on a decluttered interface with clear visual hierarchies.
+
+Responsiveness: The application should be responsive and work well on desktop browsers.
+
+Data & Backend:
+
+Initial Data: Use mock data for all entities (contracts, vendors, etc.) to facilitate UI development and testing.
+
+Data Structure: Design data models to be easily adaptable for future integration with a persistent database and cloud storage solutions. The initial setup should allow for CRUD operations on this mock data.
+
+Additional Details:
+
+Prioritize security, especially for sensitive contract data and vendor information.
+
+Ensure the app is scalable to handle a growing number of contracts and users.
+
+Include clear error handling and user feedback mechanisms.
+
