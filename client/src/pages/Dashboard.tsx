@@ -169,13 +169,13 @@ export default function Dashboard() {
                 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full" />
-                    <span className="text-gray-700">AI Analysis</span>
+                    <div className="w-4 h-4 bg-orange-500 rounded-full" />
+                    <span className="text-gray-700">Need More Information</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Progress value={15} className="w-32" />
                     <span className="text-gray-900 font-medium w-12 text-right">
-                      {stats?.statusDistribution.aiAnalysis || 0}
+                      {stats?.statusDistribution.needsMoreInformation || 0}
                     </span>
                   </div>
                 </div>

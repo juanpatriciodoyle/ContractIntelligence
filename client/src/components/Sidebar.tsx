@@ -5,24 +5,45 @@ import {
   FileText, 
   Users, 
   Bot, 
-  Bell, 
   Settings,
-  File
+  File,
+  UserCheck,
+  Upload,
+  BarChart3,
+  Bell,
+  Layers
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/auth";
 
-const navigation = [
-  { name: "Dashboard", href: "/", icon: LayoutDashboard },
-  { name: "Contracts", href: "/contracts", icon: FileText, badge: "23" },
-  { name: "Vendor Portal", href: "/vendor-portal", icon: Users },
-  { name: "AI Analytics", href: "/ai-analytics", icon: Bot },
-  { name: "Notifications", href: "/notifications", icon: Bell, badge: "5" },
-  { name: "Settings", href: "/settings", icon: Settings },
-];
+const getNavigationForRole = (role: 'admin' | 'vendor') => {
+  if (role === 'admin') {
+    return [
+      { name: "Dashboard", href: "/", icon: LayoutDashboard },
+      { name: "Contracts", href: "/contracts", icon: FileText, badge: "23" },
+      { name: "Vendor Portal", href: "/vendor-portal", icon: Users },
+      { name: "AI Analytics", href: "/ai-analytics", icon: Bot },
+      { name: "Reports", href: "/reports", icon: BarChart3 },
+      { name: "Settings", href: "/settings", icon: Settings },
+    ];
+  } else {
+    return [
+      { name: "My Dashboard", href: "/vendor-dashboard", icon: LayoutDashboard },
+      { name: "Submit Contract", href: "/submit-contract", icon: Upload },
+      { name: "My Contracts", href: "/my-contracts", icon: FileText, badge: "3" },
+      { name: "Verification Status", href: "/verification", icon: UserCheck },
+      { name: "Document Portal", href: "/documents", icon: Layers },
+      { name: "Settings", href: "/settings", icon: Settings },
+    ];
+  }
+};
 
 export default function Sidebar() {
   const [location] = useLocation();
+  const { user, switchToAdmin, switchToVendor } = useAuth();
+  const navigation = getNavigationForRole(user?.role || 'admin');
 
   const itemVariants = {
     hidden: { x: -20, opacity: 0 },
@@ -72,6 +93,28 @@ export default function Sidebar() {
           </div>
         </div>
       </motion.div>
+
+      {/* Role Switcher */}
+      <div className="px-4 py-3 border-b border-gray-200">
+        <div className="flex items-center space-x-2">
+          <Button
+            size="sm"
+            variant={user?.role === 'admin' ? 'default' : 'outline'}
+            onClick={switchToAdmin}
+            className="flex-1 text-xs"
+          >
+            Admin (Sarah)
+          </Button>
+          <Button
+            size="sm"
+            variant={user?.role === 'vendor' ? 'default' : 'outline'}
+            onClick={switchToVendor}
+            className="flex-1 text-xs"
+          >
+            Vendor (Alex)
+          </Button>
+        </div>
+      </div>
 
       {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2">
@@ -134,8 +177,10 @@ export default function Sidebar() {
             <AvatarFallback>AR</AvatarFallback>
           </Avatar>
           <div className="flex-1">
-            <p className="text-sm font-medium text-gray-900">Alex Rodriguez</p>
-            <p className="text-xs text-gray-500">Contract Administrator</p>
+            <p className="text-sm font-medium text-gray-900">{user?.firstName} {user?.lastName}</p>
+            <p className="text-xs text-gray-500">
+              {user?.role === 'admin' ? 'Contract Administrator' : 'Vendor Representative'}
+            </p>
           </div>
           <motion.div
             whileHover={{ rotate: 90 }}

@@ -134,7 +134,7 @@ export type DashboardStats = {
   statusDistribution: {
     approved: number;
     pending: number;
-    aiAnalysis: number;
+    needsMoreInformation: number;
     rejected: number;
   };
   industryData: {

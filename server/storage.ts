@@ -360,7 +360,7 @@ export class MemStorage implements IStorage {
     const statusDistribution = {
       approved: contracts.filter(c => c.status === "approved").length,
       pending: contracts.filter(c => c.status === "pending").length,
-      aiAnalysis: contracts.filter(c => c.status === "ai_review").length,
+      needsMoreInformation: contracts.filter(c => c.status === "needs_review").length,
       rejected: contracts.filter(c => c.status === "rejected").length,
     };
 
