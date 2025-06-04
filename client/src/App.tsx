@@ -7,6 +7,10 @@ import Dashboard from "@/pages/Dashboard";
 import Contracts from "@/pages/Contracts";
 import VendorPortal from "@/pages/VendorPortal";
 import VendorDashboard from "@/pages/VendorDashboard";
+import AIAnalytics from "@/pages/AIAnalytics";
+import Reports from "@/pages/Reports";
+import Settings from "@/pages/Settings";
+import SubmitContract from "@/pages/SubmitContract";
 import Layout from "@/components/Layout";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/lib/auth";
@@ -21,27 +25,13 @@ function Router() {
         <Route path="/contracts" component={Contracts} />
         <Route path="/vendor-portal" component={VendorPortal} />
         <Route path="/vendor-dashboard" component={VendorDashboard} />
-        <Route path="/ai-analytics">
-          <div className="p-6">AI Analytics Page - Coming Soon</div>
-        </Route>
-        <Route path="/reports">
-          <div className="p-6">Reports Page - Coming Soon</div>
-        </Route>
-        <Route path="/submit-contract">
-          <div className="p-6">Submit Contract Page - Coming Soon</div>
-        </Route>
-        <Route path="/my-contracts">
-          <div className="p-6">My Contracts Page - Coming Soon</div>
-        </Route>
-        <Route path="/verification">
-          <div className="p-6">Verification Status Page - Coming Soon</div>
-        </Route>
-        <Route path="/documents">
-          <div className="p-6">Document Portal Page - Coming Soon</div>
-        </Route>
-        <Route path="/settings">
-          <div className="p-6">Settings Page - Coming Soon</div>
-        </Route>
+        <Route path="/ai-analytics" component={AIAnalytics} />
+        <Route path="/reports" component={Reports} />
+        <Route path="/submit-contract" component={SubmitContract} />
+        <Route path="/my-contracts" component={Contracts} />
+        <Route path="/verification" component={SubmitContract} />
+        <Route path="/documents" component={VendorPortal} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
